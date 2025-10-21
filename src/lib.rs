@@ -1,14 +1,18 @@
-#![no_std] // 1. Désactive la librairie standard (pas d'OS)
+#![no_std] // 1. TRÈS IMPORTANT : Dit à Rust de ne PAS utiliser la librairie standard (car nous n'avons PAS d'OS).
 
+// 2. Fonction qui gère les Erreurs (Panics)
+// Si le programme rencontre un problème critique, il vient ici.
 #[panic_handler]
 fn panic(_info: &core::panic::PanicInfo) -> ! {
-    // 2. Gestionnaire d'erreur : en cas de bug, on boucle indéfiniment
+    // Pour l'instant, on boucle sans fin pour que l'ordinateur ne plante pas.
     loop {}
 }
 
-#[no_mangle]
-pub extern "C" fn _start() -> ! {
-    // 3. Point d'entrée : la première fonction exécutée par le processeur
-    // Dans notre cas, on boucle aussi pour l'instant.
+// 3. Point d'Entrée Principal
+// C'est la TOUTE PREMIÈRE fonction que le processeur exécute.
+// Elle doit être "unsafe" et "extern "C"" pour fonctionner sans OS.
+#[unsafe(no_mangle)] // <-- CHANGEMENT MAJEUR ICI
+pub extern "C" fn _start() -> ! { // <-- on retire le 'unsafe' de cette ligne
+    // Pour l'instant, notre programme ne fait rien : il boucle sans fin.
     loop {}
 }
