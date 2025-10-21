@@ -2,5 +2,7 @@
 name = "FAT32_PARSER"
 version = "0.1.0"
 edition = "2024"
-
+[lib]
+bench = false
+test = false
 [dependencies]
