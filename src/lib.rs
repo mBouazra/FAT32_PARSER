@@ -1,5 +1,5 @@
 #![no_std] // 1. TRÈS IMPORTANT : Dit à Rust de ne PAS utiliser la librairie standard (car nous n'avons PAS d'OS).
-
+#![no_main]
 // 2. Fonction qui gère les Erreurs (Panics)
 // Si le programme rencontre un problème critique, il vient ici.
 #[panic_handler]
