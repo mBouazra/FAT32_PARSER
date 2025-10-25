@@ -1,0 +1,7 @@
+cargo:rerun-if-changed=/home/mahdi/Desktop/FAT32_PARSER/Cargo.toml
+cargo:rustc-link-search=native=/home/mahdi/Desktop/FAT32_PARSER/target/bootimage/bootloader/x86_64-bootloader/release/build/bootloader-cbd92ff96048ba78/out
+cargo:rustc-link-lib=static=kernel_bin-kernel
+cargo:rerun-if-env-changed=KERNEL
+cargo:rerun-if-env-changed=KERNEL_MANIFEST
+cargo:rerun-if-changed=/home/mahdi/Desktop/FAT32_PARSER/target/x86_64-unknown-none/debug/kernel
+cargo:rerun-if-changed=build.rs

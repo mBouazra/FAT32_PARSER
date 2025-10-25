@@ -1,16 +1,11 @@
 [package]
-name = "fat32_parser" # Corrigé en snake_case
+name = "fat32_parser"
 version = "0.1.0"
-edition = "2024"
-
-[lib]
-bench = false
-test = false
-
-# AJOUTEZ CETTE SECTION pour créer un EXÉCUTABLE
-[[bin]]
-name = "fat32_parser" 
-path = "src/lib.rs" # On utilise le même fichier que la librairie
-required-features = [] 
+edition = "2021"
 
 [dependencies]
+bootloader = { version = "0.9.23", features = ["map_physical_memory"] }
+
+[[bin]]
+name = "kernel" 
+path = "src/lib.rs"
