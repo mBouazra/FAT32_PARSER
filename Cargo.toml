@@ -7,5 +7,5 @@ edition = "2021"
 bootloader = { version = "0.9.23", features = ["map_physical_memory"] }
 
 [[bin]]
-name = "kernel" 
-path = "src/lib.rs"
+name = "fat32_parser" 
+path = "src/main.rs"
