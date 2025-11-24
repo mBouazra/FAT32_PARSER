@@ -48,12 +48,12 @@ unsafe impl GlobalAlloc for BumpAllocator {
         
         // Alignement de l'adresse
         let alloc_start = (next_value + layout.align() - 1) & !(layout.align() - 1);
-        
+       //verifier ya pas depassement  		
         let alloc_end = match alloc_start.checked_add(layout.size()) {
             Some(end) => end,
             None => return ptr::null_mut(),
         };
-
+	
         if alloc_end <= heap_end {
             *next_ptr = alloc_end;
             alloc_start as *mut u8

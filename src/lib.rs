@@ -9,3 +9,5 @@ pub mod fat32_types;
 
 // Re-export for convenience
 pub use fat32_types::Fat32BootSector;
+#[cfg(test)]
+mod tests;
