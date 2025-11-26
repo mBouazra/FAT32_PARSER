@@ -1,4 +1,11 @@
 // Fichier: src/fat32_types.rs
+//! Sources:
+
+//! -Wikipedia FAT32 : https://wiki.osdev.org/FAT
+//! - Le PDF du cours sur les filesystems
+//! - microsoft FAT32 file System specification
+//! - OSDev wiki: https://wiki.osdev.org/FAT
+
 
 /// Structure représentant le Boot Sector FAT32.
 /// 
@@ -67,4 +74,33 @@ impl Fat32BootSector {
         self.reserved_sector_count as u32 
             + (self.num_fats as u32 * self.fat_size_32)
     }
+
+ /// Cette fonction extrait et retourne toutes les métadonnées
+pub fn get_info(&self) -> BootSectorInfo {
+        BootSectorInfo {
+            bytes_per_sector: self.bytes_per_sector,
+            sectors_per_cluster: self.sectors_per_cluster,
+            reserved_sectors: self.reserved_sector_count,
+            num_fats: self.num_fats,
+            total_sectors: self.total_sectors(),
+            fat_size: self.fat_size_32,
+            root_cluster: self.root_cluster,
+            first_data_sector: self.first_data_sector(),
+            is_valid: self.is_valid(),
+        }
+    }
+}
+
+
+// Structure simple pour stocker les infos
+pub struct BootSectorInfo {
+    pub bytes_per_sector: u16,
+    pub sectors_per_cluster: u8,
+    pub reserved_sectors: u16,
+    pub num_fats: u8,
+    pub total_sectors: u32,
+    pub fat_size: u32,
+    pub root_cluster: u32,
+    pub first_data_sector: u32,
+    pub is_valid: bool,
 }

@@ -1,4 +1,12 @@
 // Fichier: src/main.rs
+
+
+//! ## Sources
+//! - bootloader crate: https://github.com/rust-osdev/bootloader
+//! - phil opp tutoriel: https://os.phil-opp.com/
+//! - Cours ESGI 4A
+
+
 #![no_std]
 #![no_main]
 #![feature(abi_x86_interrupt)]
@@ -45,13 +53,13 @@ fn kernel_main(_boot_info: &'static bootloader::BootInfo) -> ! {
     let boot_sector_ptr = DISK_START_ADDR as *const Fat32BootSector;
     let boot_sector = unsafe { &*boot_sector_ptr };
 
-    // Étape 4: Analyser le boot sector
-    // On stocke les résultats dans des variables même si on les affiche pas
-    // parce que dans un vrai kernel on les utiliserait
-    let _is_valid = boot_sector.is_valid();
-    let _total_sectors = boot_sector.total_sectors();
-    let _first_data_sector = boot_sector.first_data_sector();
-
+	//etape4:parser les infos du boot sector 
+	let info = boot_sector.get_info();
+    
+    let _is_valid = info.is_valid;
+    let _total_sectors = info.total_sectors;
+    let _first_data = info.first_data_sector;
+	let _bytes_per_sector = info.bytes_per_sector;
     // Un kernel doit jamais terminer donc on loop
     loop {}
 }

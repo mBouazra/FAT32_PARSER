@@ -1,4 +1,12 @@
 // Fichier: src/allocator.rs
+
+//! Ce code est inspiré de:
+//! - phil Opp "Writing an OS in Rust": https://os.phil-opp.com/heap-allocation/
+//! - rust  Book: https://docs.rust-embedded.org/book/
+//! - rust  Allocatorapi  documentation: https://doc.rust-lang.org/alloc/alloc/trait.GlobalAlloc.html
+//! - Cours ESGI 4A 2024-2025 
+
+
 use core::{
     alloc::{GlobalAlloc, Layout},
     ptr,

@@ -1,4 +1,13 @@
 // Fichier: src/lib.rs
+
+//!  sources
+//! 
+//! - phil Opp development tutorial: https://os.phil-opp.com/
+//! - rust  programming book
+//! - rust embedded book: https://docs.rust-embedded.org/book/
+//! - Cours ESGI 4A 
+
+
 #![no_std]
 #![feature(allocator_api)]
 
